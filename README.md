@@ -2,14 +2,15 @@
 
 > @contractshark/core-spec
 
-## Writting tests
+## Overview
 
-The core test functionality is provided by the @contractshark/core-spec module
-which is automatically attached to your project at initialization.
+The core test functionality is provided by the @contractshark/core-spec module.
+
+It automatically attaches to your project at initialization.
 
 ### Initializing specs
 
-The framework provides a Spec class which holds basically the whole testing
+The framework provides a `spec` class which holds basically the whole testing
 power. You start your test by creating an instance of that class.
 
 ```typescript
@@ -62,11 +63,16 @@ spec.after((stage) => {
 These methods have access to the stage of the spec instance. The stage is global
 to the whole spec stack which means that all settings are always preserved.
 
-There are also the beforeEach and afterEach methods which are triggered before
-and after each test. These methods have access to the context and stage of the
-spec. The context represents a copy of a stage and is preserved between
-beforeEach, test and afterEach methods. This allows for testing atomic tests
-where the context is always reset for each test.
+There are also the `beforeEach` and `afterEach` methods which are triggered before
+and after each test. 
+
+These methods have access to the context and stage of the `spec`. 
+
+#### Atomic Tests
+
+The context represents a copy of a stage and is preserved between `beforeEach`, test and `afterEach` methods. 
+
+This allows for testing atomic tests where the context is always reset for each test.
 
 ```js
 spec.beforeEach((context, stage) => {
@@ -108,5 +114,9 @@ spec.test('is Satoshi with id=100', (ctx) => {
 ```
 
 Values set inside the before and after blocks are available to all spec methods.
-Values set in the beforeEach and afterEach blocks are available only on the
+Values set in the `beforeEach` and `afterEach` blocks are available only on the
 context stack of each test.
+
+## License 
+
+MIT
